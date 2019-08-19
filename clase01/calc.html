@@ -7,30 +7,69 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
-        <label for="numero1">Primer numero</label>
-        <input id="numero1" type="number" name="numero1">
-        <label for="numero1">Segundo Numero</label>
-        <input id="numero2" type="number" name="numero2">
-        <br>
-        <br>
-        <button onclick="sumar" id="suma">+</button>
-        <button id="resta">-</button>
-        <button id="mult">X</button>
-        <button id="div">%</button>
-        <br>
-        <br>
-        <p>Resultado</p>
-        <input disabed id="resultado"></input>
 
-    </form>
+        <label for="numero1">Primer numero</label>
+        <input id="numero1" type="number" name="">
+        <label for="numero1">Segundo Numero</label>
+        <input id="numero2" type="number" name="">
+        <br>
+        <br>
+        <button id="suma">+</button>
+        <button id="resta">-</button>
+        <button id="mult">x</button>
+        <button id="div">/</button>
+        <br>
+        <hr>
+        <h2 id="resultado"></h2>
+
+
     <script>
-    window.onload=function() {
-        let num1 = document.getElementById("numero1").value.onfocus;
-        let num2 = document.getElementById("numero2").value.onfocus;
-        console.log(num1);
-       
-    }
+        window.onload = function ()
+        {   
+            let botonSumar = document.getElementById("suma");
+            botonSumar.addEventListener('click', sumar);
+
+            function sumar () {
+                let num1 = document.getElementById("numero1").value;
+                let num2 = document.getElementById("numero2").value;
+                let resultado = document.getElementById("resultado");
+                let resultadoSuma = Number(num1) + Number(num2);
+                resultado.innerText = "Resultado: " + resultadoSuma;
+            }
+
+            let botonRestar = document.getElementById("resta");
+            botonRestar.addEventListener('click', restar);
+
+            function restar () {
+                let num1 = document.getElementById("numero1").value;
+                let num2 = document.getElementById("numero2").value;
+                let resultado = document.getElementById("resultado");
+                let resultadoResta = Number(num1) - Number(num2);
+                resultado.innerText = "Resultado: " + resultadoResta;
+            }
+
+            let botonMultiplicar = document.getElementById("mult");
+            botonMultiplicar.addEventListener('click', multiplicar);
+
+            function multiplicar () {
+                let num1 = document.getElementById("numero1").value;
+                let num2 = document.getElementById("numero2").value;
+                let resultado = document.getElementById("resultado");
+                let resultadoMultiplicacion = Number(num1) * Number(num2);
+                resultado.innerText = "Resultado: " + resultadoMultiplicacion;
+            }
+
+            let botonDividir = document.getElementById("div");
+            botonDividir.addEventListener('click', dividir);
+
+            function dividir () {
+                let num1 = document.getElementById("numero1").value;
+                let num2 = document.getElementById("numero2").value;
+                let resultado = document.getElementById("resultado");
+                let resultadoDivision = Number(num1) / Number(num2);
+                resultado.innerText = "Resultado: " + resultadoDivision;
+            }
+        }
     </script>
 </body>
 </html>
