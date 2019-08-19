@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="numero1">Primer numero</label>
+        <input id="numero1" type="number" name="numero1">
+        <label for="numero1">Segundo Numero</label>
+        <input id="numero2" type="number" name="numero2">
+        <br>
+        <br>
+        <button onclick="sumar" id="suma">+</button>
+        <button id="resta">-</button>
+        <button id="mult">X</button>
+        <button id="div">%</button>
+        <br>
+        <br>
+        <p>Resultado</p>
+        <input disabed id="resultado"></input>
+
+    </form>
+    <script>
+    window.onload=function() {
+        let num1 = document.getElementById("numero1").value.onfocus;
+        let num2 = document.getElementById("numero2").value.onfocus;
+        console.log(num1);
+       
+    }
+    </script>
+</body>
+</html>
