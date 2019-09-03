@@ -1,1 +1,27 @@
-{"cantidad":20,"productos":[{"nombre":"Moto Z3","sku":"1234"},{"nombre":"iPhone X","sku":"45464"}]}
+{
+    "productos":
+    [
+        {
+        "nombre":"Moto Z3",
+        "sku":"1234",
+        "precio": 100,
+        "precio_oferta": 90,
+        "cantidad": 10
+        },
+        {
+        "nombre":"iPhone X",
+        "sku":"45464",
+        "precio": 200,
+        "precio_oferta": 190,
+        "cantidad": 5
+        },
+        {
+        "nombre":"Samsung Galaxy S9",
+        "sku":"587489",
+        "precio": 150,
+        "precio_oferta": 120,
+        "cantidad": 8
+        }
+    ],
+    "cantidad":3
+}

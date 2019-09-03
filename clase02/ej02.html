@@ -7,15 +7,17 @@
     <title>Ejercicio Ajax</title>
 </head>
 <body>        
-        <button id="boton">Boton</button>
+        <button id="boton">Mostrar Productos</button>
         <br>
         <br>
-        <div id="txt">   
+        <ul id="lista"></ul>
+        <div id="div"></div>
 
-    </div>
+    </ul>
     <script>
         let boton = document.getElementById("boton");
-        let div = document.getElementById("txt");
+        let div = document.getElementById("div");
+        let ul = document.getElementById("lista");
 
         var READY_STATE_UNINITIALIZED=0;
         var READY_STATE_LOADING=1;
@@ -28,7 +30,29 @@
             if (peticion_http.readyState == READY_STATE_COMPLETE) {
                 if (peticion_http.status == 200) {
                     let obj = peticion_http.response;
-                    console.log(obj)
+                    obj.productos.forEach(element => {
+                        let nombre_h3 = document.createElement("h2");
+                        let nombre = document.createTextNode("Nombre: "+element.nombre);
+                        nombre_h3.append(nombre);
+                        ul.appendChild(nombre_h3);
+                        let sku_li = document.createElement("li");
+                        let sku = document.createTextNode("SKU: "+element.sku);
+                        sku_li.append(sku);
+                        ul.appendChild(sku_li);
+                        let precio_li = document.createElement("li");
+                        let precio = document.createTextNode("Precio: $ "+element.precio);
+                        precio_li.append(precio);
+                        ul.appendChild(precio_li);
+                        let oferta_li = document.createElement("li");
+                        let oferta = document.createTextNode("Precio Oferta: $ "+element.precio_oferta);
+                        oferta_li.append(oferta);
+                        ul.appendChild(oferta_li);
+                        let cantidad_li = document.createElement("li");
+                        let cantidad = document.createTextNode("Cantidad: "+element.cantidad);
+                        cantidad_li.append(cantidad);
+                        ul.appendChild(cantidad_li);
+                    });
+                    div.innerText = "Cantidad de productos: " + obj.cantidad;
                 }
             }
         }
@@ -42,7 +66,7 @@
             
         }
 
-        window.onload = mostrarMensaje;
+        boton.addEventListener("click", mostrarMensaje);
 
 
     </script>
