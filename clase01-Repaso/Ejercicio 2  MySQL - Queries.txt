@@ -1,0 +1,47 @@
+
+•Listar el nombre de cada alumno y el turno (debe tener un curso asignado)
+
+SELECT alumnos.nombre, cursos.turno
+FROM alumnos
+INNER JOIN cursos ON alumnos.curso_id = cursos.id;
+
+
+
+•Listar el nombre de cada alumno y el turno (tenga o no curso asignado)
+
+SELECT alumnos.nombre, cursos.turno
+FROM alumnos
+LEFT JOIN cursos ON alumnos.curso_id = cursos.id;
+
+
+
+•Listar el nombre del curso y el nombre de cada alumno de los cursos por la tarde
+
+SELECT alumnos.nombre, cursos.nombre, cursos.turno
+FROM alumnos
+INNER JOIN cursos ON alumnos.curso_id = cursos.id
+AND cursos.turno = 'tarde';
+
+
+
+•Mostrar el alumno con mayor edad
+
+SELECT alumnos.nombre, MAX(alumnos.edad)
+FROM alumnos;
+
+
+
+•Mostrar el promedio de edad de los alumnos
+
+SELECT AVG(alumnos.edad) AS 'Promedio'
+FROM alumnos;
+
+
+
+•Mostrar la cantidad de cursos
+
+SELECT COUNT(cursos.id) AS 'Cantidad de cursos'
+FROM cursos;
+
+
+
