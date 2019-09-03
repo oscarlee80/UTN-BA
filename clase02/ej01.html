@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio Ajax</title>
+</head>
+<body>        
+        <button id="boton">Boton</button>
+        <br>
+        <br>
+        <div id="txt">   
+
+    </div>
+    <script>
+        let boton = document.getElementById("boton");
+        let div = document.getElementById("txt");
+
+        var READY_STATE_UNINITIALIZED=0;
+        var READY_STATE_LOADING=1;
+        var READY_STATE_LOADED=2;
+        var READY_STATE_INTERACTIVE=3;
+        var READY_STATE_COMPLETE=4;
+        var peticion_http;
+
+        function muestraContenido () {
+            if (peticion_http.readyState == READY_STATE_COMPLETE) {
+                if (peticion_http.status == 200) {
+                    div.innerText = peticion_http.responseText;
+                }
+            }
+        }
+
+        function mostrarMensaje () {
+            peticion_http = new XMLHttpRequest ();
+            peticion_http.onreadystatechange = muestraContenido;
+            peticion_http.open("GET", "http://localhost/utn-ba/clase02/ejercicio_1.txt", true);
+            peticion_http.send(null);
+            
+        }
+
+        boton.addEventListener("click", mostrarMensaje);
+
+
+    </script>
+</body>
+</html>
