@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/startup', { useNewUrlParser: true }, function(error){
+mongoose.connect('mongodb://localhost:7777/ecommerce', { useNewUrlParser: true }, function(error){
    if(error){
       throw error; 
    }else{
@@ -8,4 +8,4 @@ mongoose.connect('mongodb://localhost/startup', { useNewUrlParser: true }, funct
    }
 });
 
-module.exports = mongoose; 
+module.exports = mongoose;

@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var users = require("../controllers/products")
+var products = require("../controllers/products")
 
 /* GET home page. */
-router.get('/', users.getAll);
-router.get('/destacados', users.getById);
-router.post('/', users.save);
+router.get('/', products.getAll);
+router.get('/destacados', products.getById);
+router.post('/', products.save);
 
 module.exports = router;
 
