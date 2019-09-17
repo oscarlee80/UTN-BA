@@ -33,15 +33,16 @@ module.exports = {
             categoria:req.body.categoria,
             destacado:req.body.destacado
         }, function (err, result) {
-            if (err) 
+            if (err) {
             next(err);
             //next('route');
-            else
+            } else {
             res.status(200).json({status: "success", message: "Product added successfully!!!", data: result});
+            }
         });
    },
    getDestacados: function(req, res, next) {
-    console.log(req.query)
+    console.log("Destacados")
         productModel.find({'destacado':1}, function(err, data){
             categoriesModel.populate(data,{path:'categoria'},function(err,data){
                 if (err) {
