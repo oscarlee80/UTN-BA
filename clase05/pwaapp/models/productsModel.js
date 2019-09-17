@@ -18,6 +18,15 @@ const ProductSchema = new Schema({
   trim: true,
   required: true
  },
- categoria: {type:Schema.ObjectId, ref:"categorias"}
+ categoria: {
+  type:Schema.ObjectId, 
+  ref:"categorias"
+ },
+ destacado: {
+  type: Number,
+  trim: true,
+  required: true
+ }
+
 });
 module.exports  =  mongoose.model('products', ProductSchema);

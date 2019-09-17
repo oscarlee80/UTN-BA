@@ -1,4 +1,4 @@
-var users = require("../models/usersModel")
+var users = require("../models/usersModel");
 
 module.exports = {
     getAll: async function(req, res, next){
@@ -6,9 +6,34 @@ module.exports = {
         console.log("data",data)
         res.status(200).json(data)
     },
-    save: async function(req, res, next){
-        await users.save("Leandro","Gil2")
-        res.status(200).json({"status":"ok"})
-    }
+    save: function(req, res, next){
+        console.log(req.body);
+      users.create({
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          password: req.body.password
+      }, function (err, result) {
+          if (err)
+          next(err);
+          else
+          res.status(200).json({status: "success", message: "Usuario Agregado!", data: result});
+      });
+    },
+    login: function(req, res, next) {
+       var email = req.body.name;
+       users.find({'name':email}, function(err, data){
+           if (err) {
+               next(err);
+           } else {
+               //res.status(200).json({status: "success", message: "ok", data: data});
+              console.log(data[0])
+               if(data && data[0].lastName==req.body.lastName){
+                 res.status(200).json({status: "success", message: "usuario encontrado"});
+               }else{
+                 res.status(501).json({status: "fail", message: "credencial invalida"});
+               }
+           }
+       });
+      }
 }
-
