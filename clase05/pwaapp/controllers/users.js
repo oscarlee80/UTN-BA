@@ -1,10 +1,20 @@
 var users = require("../models/usersModel");
 
 module.exports = {
-    getAll: async function(req, res, next){
-        var data = await users.getAll()
-        console.log("data",data)
-        res.status(200).json(data)
+    // getAll: async function(req, res, next){
+    //     var data = await users.getAll()
+    //     console.log("data",data)
+    //     res.status(200).json(data)
+    // },
+    getAll: function(req, res, next) {
+        console.log(req.query)
+       users.find({}, function(err, data){        
+            if (err) {
+                next(err);
+            } else {
+                res.status(200).json({status: "success", message: "ok", data: data});
+            }
+        });
     },
     save: function(req, res, next){
         console.log(req.body);
@@ -36,5 +46,14 @@ module.exports = {
                }
            }
        });
-      }
+      },
+    update: async function(req, res, next) {
+        var data = await users.findByIdAndUpdate(req.params.id, { $set: {firstName: req.body.firstName }});
+        res.status(200).json({status: "success", message: "usuario modificado"});
+    },
+    delete: async function(req, res, next) {
+        var data = await users.findByIdAndDelete(req.params.id);
+        res.status(200).json({status: "success", message: "usuario eliminado"});
+    }
+    
 }

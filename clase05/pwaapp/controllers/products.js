@@ -1,4 +1,4 @@
-var productModel = require("../models/productsModel")
+var productModel = require("../models/productsModel").productModel;
 var categoriesModel = require("../models/categoriesModel")
 
 module.exports = {
@@ -52,5 +52,14 @@ module.exports = {
                 }
             })
         });
-   }
+   },
+    update: async function(req, res, next) {
+        var data = await productModel.findByIdAndUpdate(req.params.id, { $set: {name: req.body.name, destacado: req.body.destacado }});
+        res.status(200).json({status: "success", message: "producto modificado"});
+    },
+
+    delete: async function(req, res, next) {
+        var data = await productModel.findByIdAndDelete(req.params.id);
+        res.status(200).json({status: "success", message: "producto eliminado"});
+    }
 }

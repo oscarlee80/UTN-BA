@@ -19,8 +19,7 @@ const ProductSchema = new Schema({
   required: true
  },
  categoria: {
-  type:Schema.ObjectId, 
-  ref:"categorias"
+  type:Schema.ObjectId, ref:"categories"
  },
  destacado: {
   type: Number,
@@ -29,4 +28,7 @@ const ProductSchema = new Schema({
  }
 
 });
-module.exports  =  mongoose.model('products', ProductSchema);
+module.exports  =  {
+    productModel:mongoose.model('products', ProductSchema),
+    productSchema:ProductSchema
+}
