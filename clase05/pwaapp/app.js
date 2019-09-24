@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-
+var jwt = require ('jsonwebtoken');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
 var salesRouter = require('./routes/sales');
@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
-app.use('/sales', salesRouter);
+app.use('/sales', validateUser, salesRouter);
 app.use('/authentication', authenticationRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -38,7 +38,8 @@ function validateUser(req, res, next) {
     if (err) {
       res.json({status:"error", message: err.message, data:null});
     }else {
-      req.body.userId = decoded.id; 
+      req.body.userId = decoded.id;
+      console.log(decoded.id);
       next();
     }
   });
