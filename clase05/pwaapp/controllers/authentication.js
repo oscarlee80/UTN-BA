@@ -25,7 +25,12 @@ module.exports = {
     //        }
     //    });
     //   }
-    login: async function (req, res, next) {
+    login: async function (req, res, next) { 
+        // JSONObject = new JSONObject(req.body);       
+        // let obj = JSON.parse(req.body);
+        console.log(req.body)
+        // debugger;
+
         let usuario = await authenticationModel.findOne({email: req.body.email});
             if (usuario) {
                 if (bcrypt.compareSync(req.body.password, usuario.password)) {
@@ -36,6 +41,7 @@ module.exports = {
                     res.json ({status: "error", message: "Email o contraseña inválidos", data: null});
                 }
             } else {
+                console.log("no hay usuario");
                 res.json({status: "not_found", message: "Usuario no encontrado", data: null});
             }
     }

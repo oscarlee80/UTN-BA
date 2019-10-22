@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
 var salesRouter = require('./routes/sales');
 var authenticationRouter = require('./routes/authentication');
+var bodyParser = require('body-parser');
 
 var app = express();
 
@@ -33,6 +34,12 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+app.use(function (req, res, next){
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  next();
+
+})
 function validateUser(req, res, next) {
   jwt.verify(req.headers['x-access-token'], req.app.get('secretKey'), function (err, decoded) {
     if (err) {

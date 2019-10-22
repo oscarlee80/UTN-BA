@@ -1,0 +1,24 @@
+<form action="" [formGroup]="productForm" (ngSubmit)="save()">
+    <label for="denominacion">Denominación </label>
+    <input [ngClass]="{error: productForm.get('denominacion').invalid}" formControlName= "denominacion" type="text" name="denominacion">
+    <p *ngIf="productForm.get('denominacion').hasError('required') && productForm.get('denominacion').dirty"> Este campo es obligatorio</p>
+    <p *ngIf="productForm.get('denominacion').hasError('minlength') && productForm.get('denominacion').dirty"> Minimo 3 chars</p>
+    <br>
+    <label for="sku">SKU </label>
+    <input formControlName= "sku" type="text" name="sku">
+    <p *ngIf="productForm.get('sku').hasError('required') && productForm.get('sku').dirty"> Este campo es obligatorio</p>
+    <br>
+    <label for="precio">Precio </label>
+    <input formControlName= "precio" type="number" name="precio">
+    <p *ngIf="productForm.get('precio').hasError('required') && productForm.get('precio').dirty"> Este campo es obligatorio</p>
+    <br>
+    <label for="oferta">Precio Oferta </label>
+    <input formControlName= "oferta" type="number" name="oferta">
+    <p *ngIf="productForm.get('oferta').hasError('required') && productForm.get('oferta').dirty"> Este campo es obligatorio</p>
+    <br>
+    <label for="descripcion">Descripción </label>
+    <input formControlName= "descripcion" type="text" name="descripcion">
+    <p *ngIf="productForm.get('descripcion').hasError('required') && productForm.get('descripcion').dirty"> Este campo es obligatorio</p>
+    <br>
+    <input type="submit" value="SAVE" [disabled]="productForm.invalid">
+</form>
