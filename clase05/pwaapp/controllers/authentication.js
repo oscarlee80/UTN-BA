@@ -26,22 +26,18 @@ module.exports = {
     //    });
     //   }
     login: async function (req, res, next) { 
-        // JSONObject = new JSONObject(req.body);       
-        // let obj = JSON.parse(req.body);
-        console.log(req.body)
-        // debugger;
 
         let usuario = await authenticationModel.findOne({email: req.body.email});
             if (usuario) {
                 if (bcrypt.compareSync(req.body.password, usuario.password)) {
                     const token = jwt.sign({id: usuario._id}, req.app.get('secretKey'), { expiresIn: '1h'});
-                    console.log (token)
+                    console.log (token, "Usuario Encontrado")
                     res.json({status: "success", message: "Usuario Encontrado", data: {user: usuario, token: token}});
                 } else {
                     res.json ({status: "error", message: "Email o contraseña inválidos", data: null});
                 }
             } else {
-                console.log("no hay usuario");
+                console.log("Usuario No Encontrado");
                 res.json({status: "not_found", message: "Usuario no encontrado", data: null});
             }
     }

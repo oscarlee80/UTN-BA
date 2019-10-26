@@ -20,13 +20,15 @@ export class LoginComponent implements OnInit {
    }
 
    login (){
-     let data = this.loginForm.value
-    //  console.log(this.loginForm.value.email);
+     let data = this.loginForm.value;
      this.loginservice.login(data).subscribe(datos=>{
-       console.log(data);
+      console.log(datos);
+      localStorage.setItem('usuario', datos["data"]["user"]);
+       localStorage.setItem('token', datos["data"]["token"]);
+       let token = localStorage.getItem('usuario');
+       console.log(token);
      });
    }
-
   ngOnInit() {
   }
 

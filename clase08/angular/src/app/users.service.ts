@@ -10,16 +10,15 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   login (data) {
-    console.log("angularrr");
     let headersClient = new HttpHeaders();
     headersClient.append('Access-Control-Allow-Origin', 'http://localhost:3000');
     
-    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    // let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
    
     return this.http.post("http://localhost:3000/authentication/login", {
       email: data.email,
       password: data.password
-    }, {headers: headers});
+    }, {headers: headersClient});
   } 
     
 }

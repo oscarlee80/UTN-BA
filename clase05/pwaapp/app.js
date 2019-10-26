@@ -12,6 +12,12 @@ var authenticationRouter = require('./routes/authentication');
 var bodyParser = require('body-parser');
 
 var app = express();
+app.use(function (req,res,next) {
+  res.append('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
+  res.append('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,12 +40,7 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-app.use(function (req, res, next){
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  next();
 
-})
 function validateUser(req, res, next) {
   jwt.verify(req.headers['x-access-token'], req.app.get('secretKey'), function (err, decoded) {
     if (err) {
