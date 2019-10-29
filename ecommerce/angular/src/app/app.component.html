@@ -1,0 +1,39 @@
+<!-- <h2>Clase 08 - Adivinanza</h2>
+<h3>Adiviná el número (1 al 10)</h3>
+<input type="text" [(ngModel)]="numero">
+<button (click)="adivinar()" [disabled]="perdiste">ADIVINAR</button>
+<h2 [class]="estado">{{ mensaje }}</h2>
+<hr>
+<h2>Clase 09 - Calculadora</h2>
+<input type="number" [(ngModel)]="numero1">
+<br>
+<input type="number" [(ngModel)]="numero2">
+<br>
+<button (click)="multiplicar()">X</button>
+<button (click)="dividir()">%</button>
+<button (click)="sumar()">+</button>
+<button (click)="restar()">-</button>
+<h3 [ngClass]="{positivo: respuesta > 0, negativo: respuesta < 0}">{{ respuesta }}</h3>
+<h3 *ngIf="rPositivo">El resultado es mayor a 0</h3>
+<h3 [hidden]="rNegativo">El resultado es mayor a 0</h3> -->
+<!-- 
+<ul>
+  <li routerLink="/home">Home</li>
+  <li routerLink="/login">Login</li>
+  <li routerLink="/products">Products</li>
+  <li routerLink="/categories">Categories</li>
+  <li routerLink="/users">Users</li>
+  <li routerLink="/sales">Sales</li> 
+</ul> -->
+
+<nav>
+  <a [routerLink]="['/home']">Home</a> | 
+  <a [routerLink]="['/login']">Login</a> |
+  <a [routerLink]="['/products']">Products</a> |
+  <a [routerLink]="['/categories']">Categories</a> |
+  <a [routerLink]="['/users']">Users</a> |
+  <a [routerLink]="['/sales']">Sales</a>
+</nav>
+<hr>
+<!-- <app-login></app-login> -->
+<router-outlet></router-outlet>

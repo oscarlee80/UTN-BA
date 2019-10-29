@@ -1,0 +1,15 @@
+.ok {
+    background-color: green;
+}
+.error {
+    background-color: red;
+}
+.positivo {
+    color: green;
+}
+.negativo {
+    color: red;
+}
+a {
+    text-decoration: none;
+}
