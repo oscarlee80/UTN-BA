@@ -38,6 +38,7 @@ module.exports = {
             //next('route');
             } else {
             res.status(200).json({status: "success", message: "Product added successfully!!!", data: result});
+            console.log("Producto Agregado!")
             }
         });
    },

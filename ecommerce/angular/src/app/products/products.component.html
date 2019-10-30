@@ -1,24 +1,29 @@
 <form action="" [formGroup]="productForm" (ngSubmit)="save()">
-    <label for="denominacion">Denominación </label>
-    <input [ngClass]="{error: productForm.get('denominacion').invalid}" formControlName= "denominacion" type="text" name="denominacion">
-    <p *ngIf="productForm.get('denominacion').hasError('required') && productForm.get('denominacion').dirty"> Este campo es obligatorio</p>
-    <p *ngIf="productForm.get('denominacion').hasError('minlength') && productForm.get('denominacion').dirty"> Minimo 3 chars</p>
+    <label for="name">Nombre </label>
+    <br>
+    <input [ngClass]="{error: productForm.get('name').invalid}" formControlName= "name" type="text" name="name">
+    <p *ngIf="productForm.get('name').hasError('required') && productForm.get('name').dirty"> Este campo es obligatorio</p>
+    <p *ngIf="productForm.get('name').hasError('minlength') && productForm.get('name').dirty"> Minimo 3 chars</p>
     <br>
     <label for="sku">SKU </label>
+    <br>
     <input formControlName= "sku" type="text" name="sku">
     <p *ngIf="productForm.get('sku').hasError('required') && productForm.get('sku').dirty"> Este campo es obligatorio</p>
     <br>
-    <label for="precio">Precio </label>
-    <input formControlName= "precio" type="number" name="precio">
-    <p *ngIf="productForm.get('precio').hasError('required') && productForm.get('precio').dirty"> Este campo es obligatorio</p>
+    <label for="price">Precio </label>
     <br>
-    <label for="oferta">Precio Oferta </label>
-    <input formControlName= "oferta" type="number" name="oferta">
-    <p *ngIf="productForm.get('oferta').hasError('required') && productForm.get('oferta').dirty"> Este campo es obligatorio</p>
+    <input formControlName= "price" type="number" name="price">
+    <p *ngIf="productForm.get('price').hasError('required') && productForm.get('price').dirty"> Este campo es obligatorio</p>
     <br>
-    <label for="descripcion">Descripción </label>
-    <input formControlName= "descripcion" type="text" name="descripcion">
-    <p *ngIf="productForm.get('descripcion').hasError('required') && productForm.get('descripcion').dirty"> Este campo es obligatorio</p>
+    <label for="categoria">Categoria </label>
+    <br>
+    <input formControlName= "categoria" type="text" name="categoria">
+    <p *ngIf="productForm.get('categoria').hasError('required') && productForm.get('categoria').dirty"> Este campo es obligatorio</p>
+    <br>
+    <label for="destacado">Destacado </label>
+    <br>
+    <input formControlName= "destacado" type="number" name="destacado">
+    <p *ngIf="productForm.get('destacado').hasError('required') && productForm.get('destacado').dirty"> Este campo es obligatorio</p>
     <br>
     <input type="submit" value="SAVE" [disabled]="productForm.invalid">
 </form>
