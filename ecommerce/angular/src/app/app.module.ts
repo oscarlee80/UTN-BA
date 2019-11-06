@@ -11,6 +11,7 @@ import { UsersComponent } from './users/users.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { SalesComponent } from './sales/sales.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProductsComponent,
     UsersComponent,
     CategoriesComponent,
-    SalesComponent
+    SalesComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

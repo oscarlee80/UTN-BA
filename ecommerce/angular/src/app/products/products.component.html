@@ -25,5 +25,5 @@
     <input formControlName= "destacado" type="number" name="destacado">
     <p *ngIf="productForm.get('destacado').hasError('required') && productForm.get('destacado').dirty"> Este campo es obligatorio</p>
     <br>
-    <input type="submit" value="SAVE" [disabled]="productForm.invalid">
+    <input type="submit" value="GUARDAR" [disabled]="productForm.invalid">
 </form>

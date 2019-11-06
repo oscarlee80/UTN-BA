@@ -1,0 +1,26 @@
+<form action="" [formGroup]="registerForm" (ngSubmit)="save()">
+    <label for="firstName">Nombre </label>
+    <br>
+    <input [ngClass]="{error: registerForm.get('firstName').invalid}" formControlName= "firstName" type="text" name="firstName">
+    <p *ngIf="registerForm.get('firstName').hasError('required') && registerForm.get('firstName').dirty"> Este campo es obligatorio</p>
+    <p *ngIf="registerForm.get('firstName').hasError('minlength') && registerForm.get('firstName').dirty"> Minimo 3 chars</p>
+    <br>
+    <label for="sku">Apellido </label>
+    <br>
+    <input formControlName= "lastName" type="text" name="lastName">
+    <p *ngIf="registerForm.get('lastName').hasError('required') && registerForm.get('lastName').dirty"> Este campo es obligatorio</p>
+    <br>
+    <label for="price">Email </label>
+    <br>
+    <input formControlName= "email" type="email" name="email">
+    <p *ngIf="registerForm.get('email').hasError('required') && registerForm.get('email').dirty"> Este campo es obligatorio</p>
+    <br>
+    <label for="password">Password </label>
+    <br>
+    <input formControlName= "password" type="password" name="password">
+    <p *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').dirty"> Este campo es obligatorio</p>
+    <br>
+    <br>
+    <input type="submit" value="GUARDAR" [disabled]="registerForm.invalid">
+</form>
+<p>{{ mensajeError }}</p>

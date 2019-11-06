@@ -20,6 +20,21 @@ export class UsersService {
       password: data.password
     }, {headers: headersClient});
   } 
+
+  register (data) {
+    let headersClient = new HttpHeaders();
+    headersClient.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+    
+    // let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+   
+    return this.http.post("http://localhost:3000/users/register", {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      password: data.password
+
+    }, {headers: headersClient});
+  } 
     
 }
 
